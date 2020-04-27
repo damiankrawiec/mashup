@@ -11,47 +11,41 @@ $label = $object->getAllLabel();
 
 ?>
 
-<div class="<?php echo (!isset($sectionData->class) ? 'container' : $sectionData->class) ?>" id="<?php echo $sectionData->url; ?>">
+    <div class="<?php echo (!isset($sectionData->class) ? 'container' : $sectionData->class) ?>" id="<?php echo $sectionData->url; ?>">
 
-    <?php
+        <?php
 
-    //Option:
-    //    //- parent (to section field, show child sections of current section)
-    //    //- begin, end (must be together) - connected 2 or more label group in one row
-    //    //- pagination always with :X on the right (number of objects show on one page of paging)
-    //    //- submenu show section name and his children via dropdown
-    //    //- scroll insert a scroll tag (animate scrolling)
+        //Option:
+        //    //- parent (to section field, show child sections of current section)
+        //    //- begin, end (must be together) - connected 2 or more label group in one row
+        //    //- pagination always with :X on the right (number of objects show on one page of paging)
+        //    //- submenu show section name and his children via dropdown
+        //    //- scroll insert a scroll tag (animate scrolling)
 
-    ?>
+        ?>
 
-    <?php $object->display($sectionData->id, $label['language']); ?>
+        <?php $object->display($sectionData->id, $label['menu']); ?>
 
-    <?php $object->display($sectionData->id, $label['menu']); ?>
+        <?php $object->display($sectionData->id, $label['slider']); ?>
 
-    <?php $object->display($sectionData->id, $label['submenu'], 'parent,begin'); ?>
+        <?php $object->display($sectionData->id, $label['news']); ?>
 
-    <?php $object->display($sectionData->id, $label['slider'], 'end'); ?>
+        <?php
 
-    <?php $object->display($sectionData->id, $label['news'], 'begin'); ?>
+        //Static content (when in system is "static" dir, and file is named like current url section) - if both are false static content is not display
+        //In static file should be defined class, rows, col, etc. - content fix to rest page box
+        //Name of files may only string section - check in foreach(dir) and stristr()
+        $object->displayStatic($sectionData->id);
 
-    <?php $object->display($sectionData->id, $label['company-skill'], 'end,pagination:1,scroll'); ?>
-
-    <?php
-
-    //Static content (when in system is "static" dir, and file is named like current url section) - if both are false static content is not display
-    //In static file should be defined class, rows, col, etc. - content fix to rest page box
-    //Name of files may only string section - check in foreach(dir) and stristr()
-    $object->displayStatic($sectionData->id);
-
-    ?>
-
-</div>
-
-<div class="im-footer">
-    <div class="container-fluid">
+        ?>
 
     </div>
-</div>
+
+    <div class="im-footer">
+        <div class="container-fluid">
+
+        </div>
+    </div>
 
 <?php
 

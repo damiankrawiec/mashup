@@ -11,6 +11,14 @@ $label = $object->getAllLabel();
 
 ?>
 
+<div class="container-fluid">
+
+    <?php $object->display($sectionData->id, $label['menu']); ?>
+
+    <?php $object->display($sectionData->id, $label['slider']); ?>
+
+</div>
+
 <div class="<?php echo (!isset($sectionData->class) ? 'container' : $sectionData->class) ?>" id="<?php echo $sectionData->url; ?>">
 
     <?php
@@ -24,17 +32,7 @@ $label = $object->getAllLabel();
 
     ?>
 
-    <?php $object->display($sectionData->id, $label['language']); ?>
-
-    <?php $object->display($sectionData->id, $label['menu']); ?>
-
-    <?php $object->display($sectionData->id, $label['submenu'], 'parent,begin'); ?>
-
-    <?php $object->display($sectionData->id, $label['slider'], 'end'); ?>
-
-    <?php $object->display($sectionData->id, $label['news'], 'begin'); ?>
-
-    <?php $object->display($sectionData->id, $label['company-skill'], 'end,pagination:1,scroll'); ?>
+    <?php $object->display($sectionData->id, $label['news']); ?>
 
     <?php
 

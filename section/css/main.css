@@ -2,7 +2,10 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  opacity: 1;
+}
+.navbar ul section {
+  float: right;
+  margin-left: 3px;
 }
 .translation {
   font-style: unset;

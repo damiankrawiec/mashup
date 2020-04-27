@@ -16,6 +16,9 @@
   list-style-type: none;
   display: inline;
 }
+.navbar ul {
+  margin: 0 auto;
+}
 .objects .pagination-arrow {
   text-align: center;
 }
@@ -25,8 +28,6 @@
 }
 .object {
   padding: 10px;
-  background-color: #ddd;
-  border: 1px solid #fff;
 }
 .object img {
   width: 100%;
