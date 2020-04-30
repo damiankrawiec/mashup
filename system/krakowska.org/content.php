@@ -5,7 +5,7 @@ require_once 'content/object/object.class.php';
 
 $object = new ObjectContent($this->systemName(), $db, $this->currentLanguage, $this->admin);
 
-$sectionData = $this->getSection();
+$sectionData = $this->getSection($this->currentSection);
 
 $label = $object->getAllLabel();
 
@@ -13,13 +13,13 @@ $label = $object->getAllLabel();
 
 <div class="container-fluid">
 
-    <?php $object->display($sectionData->id, $label['menu']); ?>
+    <?php $object->display($sectionData['id'], $label['menu']); ?>
 
-    <?php $object->display($sectionData->id, $label['slider']); ?>
+    <?php $object->display($sectionData['id'], $label['slider']); ?>
 
 </div>
 
-<div class="<?php echo (!isset($sectionData->class) ? 'container' : $sectionData->class) ?>" id="<?php echo $sectionData->url; ?>">
+<div class="<?php echo (!isset($sectionData['class']) ? 'container' : $sectionData['class']) ?>" id="<?php echo $this->currentSection; ?>">
 
     <?php
 
@@ -32,14 +32,14 @@ $label = $object->getAllLabel();
 
     ?>
 
-    <?php $object->display($sectionData->id, $label['news']); ?>
+    <?php $object->display($sectionData['id'], $label['news']); ?>
 
     <?php
 
     //Static content (when in system is "static" dir, and file is named like current url section) - if both are false static content is not display
     //In static file should be defined class, rows, col, etc. - content fix to rest page box
     //Name of files may only string section - check in foreach(dir) and stristr()
-    $object->displayStatic($sectionData->id);
+    $object->displayStatic($sectionData['id']);
 
     ?>
 
@@ -54,4 +54,4 @@ $label = $object->getAllLabel();
 <?php
 
 if(!isset($session['cookie']))
-    $object->display($sectionData->id, $label['cookie']);
+    $object->display($sectionData['id'], $label['cookie']);
